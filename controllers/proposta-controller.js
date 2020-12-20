@@ -3,7 +3,7 @@ const fetch  = require('node-fetch');
 
 exports.getPropostas = async (req, res, next) => {
     try {
-        const query = `SELECT p.*, c.* FROM tbl_proposta p LEFT JOIN tbl_cancelamento c ON p.id_cancelamento = c.id_cancelamento;`;
+        const query = `SELECT p.*, c.* FROM tbl_proposta p LEFT JOIN tbl_cancelamento c ON p.id_cancelamento = c.id_cancelamento ORDER BY data_venda DESC;`;
 
         const result = await mysql.execute(query, [req.params.matricula]);
         const response = {
@@ -37,7 +37,7 @@ exports.getPropostas = async (req, res, next) => {
 
 exports.getProposta = async (req, res, next) => {
     try {
-        const query = `SELECT p.*, c.* FROM tbl_proposta p LEFT JOIN tbl_cancelamento c ON p.id_cancelamento = c.id_cancelamento WHERE matricula_usuario = ?;`;
+        const query = `SELECT p.*, c.* FROM tbl_proposta p LEFT JOIN tbl_cancelamento c ON p.id_cancelamento = c.id_cancelamento WHERE matricula_usuario = ? ORDER BY p.data_venda DESC;`;
 
         const result = await mysql.execute(query, [req.params.matricula]);
         const response = {
