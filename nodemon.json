@@ -6,7 +6,7 @@
         "MYSQL_HOST": "204.93.193.216",
         "MYSQL_PORT": 3306,
 
-        "JWT_KEY": "segredo",
+        "JWT_KEY": "empresta8null",
         "URL_API" : "http://localhost:3000/"
     }
 }
